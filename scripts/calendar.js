@@ -5,34 +5,41 @@ function Door(calendar, day, j) {
 	this.jour = j;
 	this.width = ((calendar.width - 0.1 * calendar.width) / 4) * 0.95;
 	this.height = ((calendar.height - 0.1 * calendar.height) / 6) * 0.95;
-	this.adventMessage = 'Day ' + this.jour + ' of Advent\n\n' + '"' + messages[j-1][0] + '"\n\n\t' + 'by ' + messages[j-1][1] + '\n\n';
+	this.adventPicture = messages[j-1][0];
 	this.x = ( 0.04 * calendar.width + ((day- 1) % 4) * (1.1 * this.width) );
 	this.y = - ( 0.96 * calendar.height - Math.floor((day - 1) / 4) * (1.1 * this.height) );
 	
 	this.content = function() { 
 		
-		var node = document.createElement("li");
+		var node = document.createElement("div");
 		document.getElementById("adventDoors").appendChild(node);
 		node.id = "door" + this.jour;
 		node.style.cssText = "width: " + this.width + "px; height: " + this.height + "px; top: " + this.y + "px; left: " + this.x + "px;";
 
-		var innerNode = document.createElement("a");
-		document.getElementById("door" + this.jour).appendChild(innerNode);
-		innerNode.innerHTML = this.jour;
-		innerNode.href = "#";
+		var innerNodenumber = document.createElement("a");
+		document.getElementById("door" + this.jour).appendChild(innerNodenumber);
+		innerNodenumber.innerHTML = this.jour;
+		innerNodenumber.href = "#";
 
-		if( ( currentDate.getMonth() + 1 ) < 12 || currentDate.getDate() < this.jour ) {
-			innerNode.className = "disabled";
-			innerNode.onclick = function() {
+				
+		var Nodepicture = document.createElement("div");
+		document.getElementById("adventDoors").appendChild(Nodepicture);
+		Nodepicture.style.cssText = "width: " + this.width + "px; height: " + this.height + "px; top: " + this.y + "px; left: " + this.x + "px;";
+		Nodepicture.style.backgroundImage="url("+this.adventPicture+")";
+		Nodepicture.style.display='none';
+		
+
+		// if( ( currentDate.getMonth() + 1 ) < 12 || currentDate.getDate() < this.jour ) {
+		// 	innerNodenumber.className = "disabled";
+		// 	innerNodenumber.onclick = function() {
+		// 		return false;
+		// 	}
+		// } else {
+				innerNodenumber.onclick = function() {
+				Nodepicture.style.display='block';
 				return false;
 			}
-		} else {
-			var adventMessage = this.adventMessage;
-			innerNode.onclick = function() {
-				alert(adventMessage);
-				return false;
-			}
-		}	
+		// }	
 	};
 
 }
