@@ -38,12 +38,12 @@ function Door(calendar, day, j) {
 }
 
 (function() {
-	console.log(myCase)
+	// console.log(myCase)
 	var doors = [];
 	var j=0;
 	for(var i = 0; i < 24; i++) {
 		j=myCase[i]
-		console.log(j);
+		// console.log(j);
 		doors[i] = new Door(myCal, i+1 , j);
 		doors[i].content();
 
