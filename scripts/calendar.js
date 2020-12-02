@@ -29,17 +29,17 @@ function Door(calendar, day, j) {
 		Nodepicture.style.display='none';
 		
 
-		// if( ( currentDate.getMonth() + 1 ) < 12 || currentDate.getDate() < this.jour ) {
-		// 	innerNodenumber.className = "disabled";
-		// 	innerNodenumber.onclick = function() {
-		// 		return false;
-		// 	}
-		// } else {
+		if( ( currentDate.getMonth() + 1 ) < 12 || currentDate.getDate() < this.jour ) {
+			innerNodenumber.className = "disabled";
+			innerNodenumber.onclick = function() {
+				return false;
+			}
+		} else {
 				innerNodenumber.onclick = function() {
 				Nodepicture.style.display='block';
 				return false;
 			}
-		// }	
+		}	
 	};
 
 }
