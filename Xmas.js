@@ -9,7 +9,7 @@ nbDaysBeforeChristmas = Math.ceil(nbDaysBeforeChristmas);
 // console.log(nbDaysBeforeChristmas);
 
 let christmasModeWidget = document.createElement('div');
-christmasModeWidget.innerText = `Noël est dans ${nbDaysBeforeChristmas} jours`;
+// christmasModeWidget.innerText = `Noël est dans ${nbDaysBeforeChristmas} jours`;
 christmasModeWidget.style = `
 position: fixed;
 bottom: 16px;
@@ -53,14 +53,14 @@ function enableChristmasMode() {
 //   ** MUSIQUE DE NOël
 //   */
 
-//   let audioPlayer = document.createElement("audio");
-//   audioPlayer.loop = true;
-//   audioPlayer.src = "https://cf.appdrag.com/wassimdemo/audio/Christmas Village - Aaron Kenny.mp3";
-//   audioPlayer.type = 'audio/mpeg';
-//   audioPlayer.autoplay = true;
-//   audioPlayer.style = "display:none;";
+  // let audioPlayer = document.createElement("audio");
+  // audioPlayer.loop = true;
+  // audioPlayer.src = "https://cf.appdrag.com/wassimdemo/audio/Christmas Village - Aaron Kenny.mp3";
+  // audioPlayer.type = 'audio/mpeg';
+  // audioPlayer.autoplay = true;
+  // audioPlayer.style = "display:none;";
 
-//   document.body.appendChild(audioPlayer);
+  // document.body.appendChild(audioPlayer);
 
   initSnow();
 }

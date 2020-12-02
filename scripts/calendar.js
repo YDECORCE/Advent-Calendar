@@ -15,18 +15,21 @@ function Door(calendar, day, j) {
 		document.getElementById("adventDoors").appendChild(node);
 		node.id = "door" + this.jour;
 		node.style.cssText = "width: " + this.width + "px; height: " + this.height + "px; top: " + this.y + "px; left: " + this.x + "px;";
+		
 
 		var innerNodenumber = document.createElement("a");
 		document.getElementById("door" + this.jour).appendChild(innerNodenumber);
 		innerNodenumber.innerHTML = this.jour;
 		innerNodenumber.href = "#";
 
+		
 				
 		var Nodepicture = document.createElement("div");
 		document.getElementById("adventDoors").appendChild(Nodepicture);
 		Nodepicture.style.cssText = "width: " + this.width + "px; height: " + this.height + "px; top: " + this.y + "px; left: " + this.x + "px;";
 		Nodepicture.style.backgroundImage="url("+this.adventPicture+")";
 		Nodepicture.style.display='none';
+		Nodepicture.style.borderRadius='0px 10px 10px 0px';
 		
 
 		if( ( currentDate.getMonth() + 1 ) < 12 || currentDate.getDate() < this.jour ) {
@@ -36,7 +39,20 @@ function Door(calendar, day, j) {
 			}
 		} else {
 				innerNodenumber.onclick = function() {
-				Nodepicture.style.display='block';
+				window.setTimeout(ShowPicture,500)
+				function ShowPicture(){
+					Nodepicture.classList="fade-in"
+					Nodepicture.style.display='block'
+					let audioPlayer = document.createElement("audio");
+  					audioPlayer.loop = false;
+					audioPlayer.src = "images/VOXMale_Santa claus oh oh oh 4 (ID 2077)_BSB.mp3";
+					audioPlayer.type = 'audio/mpeg';
+					audioPlayer.autoplay = true;
+					audioPlayer.style = "display:none;";
+
+  					document.body.appendChild(audioPlayer);
+
+				}
 				return false;
 			}
 		}	
