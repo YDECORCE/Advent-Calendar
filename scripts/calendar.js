@@ -1,13 +1,13 @@
 var myCal = document.getElementById("adventCal");
 var currentDate = new Date();
 
-function Door(calendar, day, j) {
+function Door(calendar, Boite, j) {
 	this.jour = j;
-	this.width = ((calendar.width - 0.1 * calendar.width) / 4) * 0.95;
-	this.height = ((calendar.height - 0.1 * calendar.height) / 6) * 0.95;
-	this.adventPicture = messages[j-1][0];
-	this.x = ( 0.04 * calendar.width + ((day- 1) % 4) * (1.1 * this.width) );
-	this.y = - ( 0.96 * calendar.height - Math.floor((day - 1) / 4) * (1.1 * this.height) );
+	this.width = ((0.9 * calendar.width)/4) * 0.95;
+	this.height = ((0.9 * calendar.height)/6) * 0.95;
+	this.adventPicture = messages[j-1];
+	this.x = ( 0.04 * calendar.width + ((Boite) % 4) * (1.1 * this.width) );
+	this.y = - ( 0.96 * calendar.height - Math.floor((Boite) / 4) * (1.1 * this.height) );
 	
 	this.content = function() { 
 		
@@ -28,7 +28,8 @@ function Door(calendar, day, j) {
 		document.getElementById("adventDoors").appendChild(Nodepicture);
 		Nodepicture.style.cssText = "width: " + this.width + "px; height: " + this.height + "px; top: " + this.y + "px; left: " + this.x + "px;";
 		Nodepicture.style.backgroundImage="url("+this.adventPicture+")";
-		Nodepicture.style.display='none';
+		if(!localStorage.getItem("jour"+j+"")){Nodepicture.style.display='none';}
+		else{Nodepicture.style.display='block';}
 		Nodepicture.style.borderRadius='0px 10px 10px 0px';
 		
 
@@ -49,9 +50,9 @@ function Door(calendar, day, j) {
 					audioPlayer.type = 'audio/mpeg';
 					audioPlayer.autoplay = true;
 					audioPlayer.style = "display:none;";
-
-  					document.body.appendChild(audioPlayer);
-
+					document.body.appendChild(audioPlayer);
+					localStorage.setItem("jour"+j+"",j);
+					// localStorage.setItem("display"+j+"","Block");
 				}
 				return false;
 			}
@@ -67,7 +68,7 @@ function Door(calendar, day, j) {
 	for(var i = 0; i < 24; i++) {
 		j=myCase[i]
 		// console.log(j);
-		doors[i] = new Door(myCal, i+1 , j);
+		doors[i] = new Door(myCal, i , j);
 		doors[i].content();
 
 	}
