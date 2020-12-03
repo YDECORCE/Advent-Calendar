@@ -32,7 +32,7 @@ body {
 
 .demo-content {
   max-width: 534px;
-  margin-top: 50px;
+  /* margin-top: 50px; */
   margin-right: auto;
   margin-left: auto;
   margin-bottom: 0px;

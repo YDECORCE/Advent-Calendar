@@ -21,9 +21,8 @@ var myCase=[];
 if(!localStorage.getItem('TableCase')) {
 myCase = ['1','2','3','4','5','6','7','8','9','10','11','12','13','14','15','16','17','18','19','20','21','22','23','24'];
 shuffle(myCase);
-// console.log(myCase);
 localStorage.setItem("TableCase", JSON.stringify(myCase));}
+
 else{
     myCase=JSON.parse(localStorage.getItem('TableCase'))
-    // console.log(myCase);
-}
+   }
